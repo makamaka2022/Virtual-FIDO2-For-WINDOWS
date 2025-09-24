@@ -1,4 +1,4 @@
-# ⚠️ The driver is not signed, please sign the driver first, then install it.
+# ⚠️ The driver is not signed, please disable driver signature enforcement first, then install it.
 
 # VirtualFido2-USB
 
