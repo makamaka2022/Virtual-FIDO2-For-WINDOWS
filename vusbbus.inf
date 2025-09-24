@@ -1,0 +1,62 @@
+[Version]
+Signature="$WINDOWS NT$"
+Class=USB
+ClassGuid={36FC9E60-C465-11CF-8056-444553540000}
+Provider=%Provider%
+PnpLockDown=1
+DriverVer = 09/24/2025,0.3.5.0
+CatalogFile=vusbbus.cat
+
+[Manufacturer]
+%StdMfg%=Standard,NTamd64
+
+[Standard.NTamd64]
+%vpnp%=vusbbus_Device,	root\VUBUS
+%vehci%=vusbbus_Device,	VUBUS\vehci
+%vxhci%=vusbbus_Device,	VUBUS\vxhci
+%vhub2%=vusbbus_Device,	USB\ROOT_VHUB20&VID1086&PID1002
+%vhub3%=vusbbus_Device,	USB\ROOT_VHUB30&VID1086&PID1003
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[SourceDisksNames]
+1 = %DiskId1%,,,""
+
+[SourceDisksFiles]
+vusbbus.sys  = 1,,
+
+[Drivers_Dir]
+vusbbus.sys
+
+[vusbbus_Device.NTamd64]
+CopyFiles=Drivers_Dir
+
+[vusbbus_Device.NTamd64.HW]
+AddReg=vusbbus_Device_AddReg
+
+[vusbbus_Device_AddReg]
+HKR,,DeviceCharacteristics,0x10001,0x0100         ; Use same security checks on relative opens
+
+[vusbbus_Device.NTamd64.Services]
+AddService = vusbbus,0x00000002, vusbbus_Service_Inst
+
+[vusbbus_Service_Inst]
+DisplayName    = %ServiceDesc%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\vusbbus.sys
+LoadOrderGroup = Extended Base
+
+[Strings]
+Provider = "VUSB"
+StdMfg = "VUSB"
+DiskId1 = "VUSB Disk"
+vpnp = "VUSB BUS"
+vehci = "VEHCI USB2.0 Controller"
+vxhci = "VXHCI USB3.0 Controller"
+vhub2 = "VHUB USB2.0 HUB"
+vhub3 = "VHUB USB3.0 HUB"
+ServiceDesc = "Virtual USB BUS DRIVER"
+
