@@ -4,7 +4,7 @@ Class=USB
 ClassGuid={36FC9E60-C465-11CF-8056-444553540000}
 Provider=%Provider%
 PnpLockDown=1
-DriverVer = 09/24/2025,0.3.5.0
+DriverVer = 10/01/2025,0.3.5.0
 CatalogFile=vusbbus.cat
 
 [Manufacturer]
