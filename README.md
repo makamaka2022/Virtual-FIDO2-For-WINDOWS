@@ -1,5 +1,8 @@
 # ⚠️ The driver is not signed, please disable driver signature enforcement first, then install it.
 
+![FIDO2 Workflow Diagram](demo.png "FIDO2 Device Workflow")
+
+
 # VirtualFido2-USB
 
 [English](README.md) | [中文](README.zh-CN.md)
